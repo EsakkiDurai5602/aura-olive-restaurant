@@ -368,8 +368,13 @@ function persistState() {
 // ============================================================================
 
 async function initSupabase() {
-  const url = localStorage.getItem('aura_supabase_url') || '';
-  const key = localStorage.getItem('aura_supabase_key') || '';
+  let url = (localStorage.getItem('aura_supabase_url') || '').trim();
+  const key = (localStorage.getItem('aura_supabase_key') || '').trim();
+
+  // Auto-sanitize URL: strip /rest/v1 and trailing slashes
+  if (url) {
+    url = url.replace(/\/rest\/v1\/?$/, '').replace(/\/+$/, '');
+  }
 
   if (url && key && window.supabase) {
     try {
@@ -1148,9 +1153,15 @@ function setDemoUser(name, email, role) {
 // ============================================================================
 
 async function handleSaveSupabaseKeys() {
-  const url = document.getElementById('inputSupabaseUrl').value.trim();
+  let url = document.getElementById('inputSupabaseUrl').value.trim();
   const key = document.getElementById('inputSupabaseKey').value.trim();
   const feedback = document.getElementById('keysFeedbackMsg');
+
+  // Automatically strip /rest/v1 or trailing slash if entered
+  if (url) {
+    url = url.replace(/\/rest\/v1\/?$/, '').replace(/\/+$/, '');
+    document.getElementById('inputSupabaseUrl').value = url;
+  }
 
   if (!url || !key) {
     if (feedback) {
