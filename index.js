@@ -245,9 +245,13 @@ app.get('/api/health', (req, res) => {
 app.get('/api/config', (req, res) => {
   const rawUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || '';
   const cleanUrl = rawUrl.replace(/\/rest\/v1\/?$/, '').replace(/\/+$/, '');
+  const key = process.env.SUPABASE_ANON_KEY || 
+              process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || 
+              process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 
+              process.env.SUPABASE_PUBLISHABLE_KEY || '';
   res.json({
     supabaseUrl: cleanUrl,
-    supabaseAnonKey: process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+    supabaseAnonKey: key
   });
 });
 

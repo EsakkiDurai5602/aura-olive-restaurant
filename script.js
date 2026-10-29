@@ -369,7 +369,25 @@ function persistState() {
 
 async function initSupabase() {
   let url = (localStorage.getItem('aura_supabase_url') || '').trim();
-  const key = (localStorage.getItem('aura_supabase_key') || '').trim();
+  let key = (localStorage.getItem('aura_supabase_key') || '').trim();
+
+  // If not stored locally, attempt to fetch from server /api/config
+  if (!url || !key) {
+    try {
+      const res = await fetch('/api/config');
+      if (res.ok) {
+        const config = await res.json();
+        if (config.supabaseUrl && config.supabaseAnonKey) {
+          url = config.supabaseUrl;
+          key = config.supabaseAnonKey;
+          localStorage.setItem('aura_supabase_url', url);
+          localStorage.setItem('aura_supabase_key', key);
+        }
+      }
+    } catch {
+      // Offline or direct static preview
+    }
+  }
 
   // Auto-sanitize URL: strip /rest/v1 and trailing slashes
   if (url) {
