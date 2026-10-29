@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA & OLIVE | Modern Culinary House & Seat Booking</title>
+  <meta name="description" content="Reserve exclusive dining tables at Aura & Olive. Interactive floor plans, chef-curated tasting menus, and real-time table reservations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Notification / Supabase Status Banner -->
+  <div id="topBanner" class="top-banner">
+    <div class="banner-container">
+      <div class="banner-status">
+        <span class="status-indicator-dot" id="bannerDot"></span>
+        <span id="bannerStatusText">Database Mode: Local Storage Demo (Ready to connect with Supabase)</span>
+      </div>
+      <div class="banner-actions">
+        <button type="button" class="banner-link-btn" id="openSupabaseGuideBtn">
+          <svg class="svg-icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Supabase & Vercel Guide
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo">
+        <div class="logo-mark">
+          <svg class="svg-icon-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">AURA &amp; OLIVE</span>
+          <span class="brand-subtitle">Culinary House &amp; Lounge</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#experience" class="nav-link">Dining Zones</a>
+        <a href="#seatBooking" class="nav-link">Book a Seat</a>
+        <a href="#menu" class="nav-link">Chef's Menu</a>
+        <a href="#reviews" class="nav-link">Reviews</a>
+        <a href="#myBookings" class="nav-link">My Bookings</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Auth Profile / Login Button -->
+        <div class="user-menu-wrapper" id="userMenuWrapper">
+          <button type="button" class="btn-user-profile" id="userProfileBtn">
+            <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span id="navUserName">Sign In</span>
+          </button>
+        </div>
+
+        <!-- Admin / Manager Button -->
+        <button type="button" class="btn-admin-pill" id="openAdminBtn" title="Manager Table & Reservation Control">
+          <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span>Staff Portal</span>
+        </button>
+
+        <!-- CTA Reservation Button -->
+        <a href="#seatBooking" class="btn-primary-glow">
+          <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+          <span>Reserve Table</span>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button type="button" class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+          <svg class="svg-icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-glow-amber"></div>
+      <div class="hero-glow-emerald"></div>
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>Selected in Culinary Excellence 2026</span>
+        </div>
+
+        <h1 class="hero-title">
+          Where Artisanal Gastronomy Meets <span class="text-gradient-gold">Captivating Ambiance</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Experience interactive seat selection across 4 architectural dining zones. Reserve your table in real-time, pre-order rare vintages, and savor woodfired mastery.
+        </p>
+
+        <!-- Quick Booking Search Bar -->
+        <div class="hero-booking-bar">
+          <div class="booking-bar-field">
+            <label for="quickDate">
+              <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+              Date
+            </label>
+            <input type="date" id="quickDate">
+          </div>
+
+          <div class="booking-bar-field">
+            <label for="quickTime">
+              <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Time
+            </label>
+            <select id="quickTime">
+              <option value="18:00">06:00 PM (Dinner)</option>
+              <option value="18:30">06:30 PM (Dinner)</option>
+              <option value="19:00">07:00 PM (Peak)</option>
+              <option value="19:30" selected>07:30 PM (Peak)</option>
+              <option value="20:00">08:00 PM (Dinner)</option>
+              <option value="20:30">08:30 PM (Late)</option>
+              <option value="12:30">12:30 PM (Lunch)</option>
+              <option value="13:30">01:30 PM (Lunch)</option>
+            </select>
+          </div>
+
+          <div class="booking-bar-field">
+            <label for="quickGuests">
+              <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Party Size
+            </label>
+            <select id="quickGuests">
+              <option value="2" selected>2 Guests (Romantic / Intimate)</option>
+              <option value="4">4 Guests (Social Dining)</option>
+              <option value="6">6 Guests (Celebration Table)</option>
+              <option value="8">8 Guests (Executive Banquet)</option>
+            </select>
+          </div>
+
+          <div class="booking-bar-field">
+            <label for="quickZone">
+              <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+              Atmosphere Zone
+            </label>
+            <select id="quickZone">
+              <option value="main_hall">Main Dining Hall</option>
+              <option value="outdoor_terrace">Garden Terrace (Al-Fresco)</option>
+              <option value="skyline_rooftop">Skyline Rooftop Lounge</option>
+              <option value="vip_cellar">The Sommelier VIP Cellar</option>
+            </select>
+          </div>
+
+          <button type="button" class="btn-booking-submit" id="quickSearchBtn">
+            <span>Find Table</span>
+            <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+
+        <!-- Trust Highlights -->
+        <div class="hero-stats-grid">
+          <div class="hero-stat-card">
+            <div class="stat-number">4.9 / 5.0</div>
+            <div class="stat-label">Verified Guest Rating</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="stat-number">4 Unique Zones</div>
+            <div class="stat-label">Skyline, Garden, Hall &amp; Cellar</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="stat-number">100% Guaranteed</div>
+            <div class="stat-label">Instant Live Seat Confirmation</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DINING ZONES / ATMOSPHERE SECTION -->
+    <section class="section-container" id="experience">
+      <div class="section-header text-center">
+        <div class="section-eyebrow">
+          <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <span>Curated Dining Atmospheres</span>
+        </div>
+        <h2 class="section-title">Select Your Ideal Ambience</h2>
+        <p class="section-description">
+          Each zone at Aura &amp; Olive is architecturally tailored with distinct lighting, acoustics, and views to match your occasion.
+        </p>
+      </div>
+
+      <div class="zones-grid" id="zonesCardGrid">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+    <!-- INTERACTIVE SEAT BOOKING & FLOOR PLAN SECTION -->
+    <section class="section-container booking-section-bg" id="seatBooking">
+      <div class="section-header text-center">
+        <div class="section-eyebrow">
+          <svg class="svg-icon-xs text-emerald" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span>Live Interactive Seating Chart</span>
+        </div>
+        <h2 class="section-title">Interactive Table Reservation</h2>
+        <p class="section-description">
+          Select your preferred zone, click any table on the interactive layout, configure pre-order add-ons, and secure your dining pass instantly.
+        </p>
+      </div>
+
+      <!-- Zone Selector Tabs -->
+      <div class="zone-tabs-wrapper" id="zoneTabs">
+        <button type="button" class="zone-tab-btn active" data-zone="main_hall">
+          <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Main Dining Hall</span>
+        </button>
+        <button type="button" class="zone-tab-btn" data-zone="outdoor_terrace">
+          <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+          <span>Garden Terrace</span>
+        </button>
+        <button type="button" class="zone-tab-btn" data-zone="skyline_rooftop">
+          <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20M7 20v-4M17 20v-4M12 20V4M12 4l5 5M12 4 7 9"/></svg>
+          <span>Skyline Rooftop</span>
+        </button>
+        <button type="button" class="zone-tab-btn" data-zone="vip_cellar">
+          <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 22h8M12 11v11M19 3l-7 8-7-8h14z"/></svg>
+          <span>Sommelier VIP Cellar</span>
+        </button>
+      </div>
+
+      <!-- Interactive Booking Studio Layout -->
+      <div class="booking-studio-grid">
+        <!-- Left: Visual Floor Plan Canvas -->
+        <div class="floor-plan-card">
+          <div class="floor-plan-header">
+            <div>
+              <h3 class="card-heading" id="floorPlanZoneTitle">Main Dining Hall Floor Plan</h3>
+              <p class="card-subheading" id="floorPlanZoneTagline">Grand Chandeliers &amp; Open Fire Hearth</p>
+            </div>
+            <!-- Status Legend -->
+            <div class="table-legend">
+              <span class="legend-item"><span class="legend-color color-available"></span> Available</span>
+              <span class="legend-item"><span class="legend-color color-selected"></span> Selected</span>
+              <span class="legend-item"><span class="legend-color color-reserved"></span> Reserved</span>
+            </div>
+          </div>
+
+          <!-- Interactive Floor Canvas -->
+          <div class="floor-stage" id="floorStage">
+            <div class="floor-grid-lines"></div>
+            <!-- Stage Features (Bar, Kitchen, Views) -->
+            <div class="stage-landmark landmark-top" id="stageTopFeature">
+              <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/></svg>
+              <span id="landmarkTopLabel">Open Woodfired Hearth &amp; Executive Kitchen</span>
+            </div>
+            <div class="stage-landmark landmark-bottom" id="stageBottomFeature">
+              <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/></svg>
+              <span id="landmarkBottomLabel">Main Entrance &amp; Hostess Reception</span>
+            </div>
+
+            <!-- Dynamic Table Nodes -->
+            <div class="tables-layer" id="tablesLayer">
+              <!-- Rendered via JavaScript -->
+            </div>
+          </div>
+
+          <!-- Floor Plan Helper Hint -->
+          <div class="floor-hint">
+            <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="16" y2="12"/><line x1="12" x2="12.01" y1="8" y2="8"/></svg>
+            <span>Click any glowing table icon to inspect details and reserve your seat.</span>
+          </div>
+        </div>
+
+        <!-- Right: Booking Form & Customizer -->
+        <div class="booking-form-card">
+          <div class="form-card-header">
+            <h3 class="card-heading">Reservation Details</h3>
+            <span class="badge-status-green" id="selectedTableBadge">Select a Table</span>
+          </div>
+
+          <form id="reservationForm" class="reservation-form">
+            <!-- Selected Table Summary Box -->
+            <div class="selected-table-callout" id="selectedTableCallout">
+              <div class="callout-icon">
+                <svg class="svg-icon-md text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              </div>
+              <div class="callout-details">
+                <div class="callout-title" id="calloutTableTitle">No Table Selected Yet</div>
+                <div class="callout-meta" id="calloutTableMeta">Click any green table on the floor plan</div>
+                <div class="callout-tags" id="calloutTableFeatures"></div>
+              </div>
+            </div>
+
+            <!-- Date & Time Row -->
+            <div class="form-row-2">
+              <div class="input-group">
+                <label for="resDate">
+                  <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                  Reservation Date
+                </label>
+                <input type="date" id="resDate" required>
+              </div>
+
+              <div class="input-group">
+                <label for="resTime">
+                  <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  Dining Time
+                </label>
+                <select id="resTime" required>
+                  <option value="12:00">12:00 PM (Lunch)</option>
+                  <option value="12:30">12:30 PM (Lunch)</option>
+                  <option value="13:00">01:00 PM (Lunch)</option>
+                  <option value="18:00">06:00 PM (Dinner)</option>
+                  <option value="18:30">06:30 PM (Dinner)</option>
+                  <option value="19:00">07:00 PM (Prime)</option>
+                  <option value="19:30" selected>07:30 PM (Prime)</option>
+                  <option value="20:00">08:00 PM (Dinner)</option>
+                  <option value="20:30">08:30 PM (Dinner)</option>
+                  <option value="21:00">09:00 PM (Late)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Guests & Occasion Row -->
+            <div class="form-row-2">
+              <div class="input-group">
+                <label for="resGuests">
+                  <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                  Number of Guests
+                </label>
+                <select id="resGuests" required>
+                  <option value="1">1 Guest (Solo Dining)</option>
+                  <option value="2" selected>2 Guests</option>
+                  <option value="3">3 Guests</option>
+                  <option value="4">4 Guests</option>
+                  <option value="5">5 Guests</option>
+                  <option value="6">6 Guests</option>
+                  <option value="7">7 Guests</option>
+                  <option value="8">8 Guests (Large Banquet)</option>
+                </select>
+              </div>
+
+              <div class="input-group">
+                <label for="resOccasion">
+                  <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  Dining Occasion
+                </label>
+                <select id="resOccasion">
+                  <option value="Casual Dinner">Casual Dinner</option>
+                  <option value="Anniversary">Romantic Anniversary</option>
+                  <option value="Birthday Celebration">Birthday Celebration</option>
+                  <option value="Business Dinner">Business Dinner</option>
+                  <option value="Date Night">Date Night</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Guest Contact Details -->
+            <div class="form-row-2">
+              <div class="input-group">
+                <label for="resName">Full Name</label>
+                <input type="text" id="resName" placeholder="Sophia Laurent" required>
+              </div>
+
+              <div class="input-group">
+                <label for="resEmail">Email Address</label>
+                <input type="email" id="resEmail" placeholder="sophia@example.com" required>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="resPhone">Phone Number</label>
+              <input type="tel" id="resPhone" placeholder="+1 (555) 019-2834" required>
+            </div>
+
+            <!-- Add-on Experiences (Pre-orders) -->
+            <div class="addons-section">
+              <label class="addons-label">
+                <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 22h8M12 11v11M19 3l-7 8-7-8h14z"/></svg>
+                Curated Add-on Experiences (Optional)
+              </label>
+              <div class="addons-list" id="addonsList">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="resNotes">Special Requests or Dietary Allergies</label>
+              <textarea id="resNotes" rows="2" placeholder="e.g. Quiet corner table, gluten allergy, celebration candles for dessert..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-confirm-booking" id="confirmBookingBtn" disabled>
+              <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span id="confirmBookingBtnText">Select a Table to Continue</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHEF'S CULINARY MENU SECTION -->
+    <section class="section-container" id="menu">
+      <div class="section-header text-center">
+        <div class="section-eyebrow">
+          <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          <span>Crafted by Executive Chef Julian Rossi</span>
+        </div>
+        <h2 class="section-title">The Seasonal Tasting Menu</h2>
+        <p class="section-description">
+          Woodfired specialties, dry-aged cuts, hand-pulled pastas, and biodynamic wines sourced directly from Mediterranean artisan producers.
+        </p>
+      </div>
+
+      <!-- Menu Controls: Category Filters & Search -->
+      <div class="menu-controls-wrapper">
+        <div class="menu-search-bar">
+          <svg class="svg-icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/></svg>
+          <input type="text" id="menuSearchInput" placeholder="Search dishes, truffles, seafood, wine...">
+        </div>
+
+        <div class="menu-category-tabs" id="menuCategoryTabs">
+          <button type="button" class="menu-tab-btn active" data-category="all">All Specialties</button>
+          <button type="button" class="menu-tab-btn" data-category="starters">Starters &amp; Tapas</button>
+          <button type="button" class="menu-tab-btn" data-category="chef_specials">Chef's Signatures</button>
+          <button type="button" class="menu-tab-btn" data-category="woodfired_mains">Woodfired Mains</button>
+          <button type="button" class="menu-tab-btn" data-category="artisan_pastas">Artisan Pastas</button>
+          <button type="button" class="menu-tab-btn" data-category="plant_based">Plant-Based</button>
+          <button type="button" class="menu-tab-btn" data-category="desserts">Desserts</button>
+          <button type="button" class="menu-tab-btn" data-category="handcrafted_cocktails">Mixology Cocktails</button>
+        </div>
+      </div>
+
+      <!-- Dietary Filters -->
+      <div class="dietary-filter-bar">
+        <span class="dietary-filter-label">Filter by:</span>
+        <button type="button" class="dietary-chip" data-diet="chef_signature">Chef's Signature</button>
+        <button type="button" class="dietary-chip" data-diet="gluten_free">Gluten-Free</button>
+        <button type="button" class="dietary-chip" data-diet="vegetarian">Vegetarian</button>
+        <button type="button" class="dietary-chip" data-diet="vegan">Vegan</button>
+      </div>
+
+      <!-- Menu Grid -->
+      <div class="menu-grid" id="menuGrid">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS & TESTIMONIALS SECTION -->
+    <section class="section-container reviews-section-bg" id="reviews">
+      <div class="section-header text-center">
+        <div class="section-eyebrow">
+          <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>Guest Stories</span>
+        </div>
+        <h2 class="section-title">Acclaimed Dining Experiences</h2>
+        <p class="section-description">Read what our verified patrons have to say about their memorable evenings at Aura &amp; Olive.</p>
+      </div>
+
+      <!-- Ratings Summary Banner -->
+      <div class="ratings-overview-card">
+        <div class="overall-score-box">
+          <div class="score-number">4.9</div>
+          <div class="stars-row">
+            <svg class="svg-icon-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="svg-icon-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="svg-icon-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="svg-icon-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="svg-icon-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="score-caption">Based on 1,420+ Verified Bookings</div>
+        </div>
+
+        <div class="rating-subcategories">
+          <div class="sub-rating-item">
+            <span class="sub-rating-title">Food &amp; Presentation</span>
+            <div class="sub-progress-bar"><div class="sub-fill" style="width: 98%;"></div></div>
+            <span class="sub-rating-val">4.9</span>
+          </div>
+          <div class="sub-rating-item">
+            <span class="sub-rating-title">Ambiance &amp; Acoustic Comfort</span>
+            <div class="sub-progress-bar"><div class="sub-fill" style="width: 96%;"></div></div>
+            <span class="sub-rating-val">4.8</span>
+          </div>
+          <div class="sub-rating-item">
+            <span class="sub-rating-title">Sommelier &amp; Waitstaff Service</span>
+            <div class="sub-progress-bar"><div class="sub-fill" style="width: 100%;"></div></div>
+            <span class="sub-rating-val">5.0</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn-secondary-glow" id="openReviewModalBtn">
+          <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          <span>Write a Review</span>
+        </button>
+      </div>
+
+      <!-- Reviews Cards Grid -->
+      <div class="reviews-grid" id="reviewsGrid">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+    <!-- MY BOOKINGS & RESERVATION LOOKUP SECTION -->
+    <section class="section-container" id="myBookings">
+      <div class="section-header text-center">
+        <div class="section-eyebrow">
+          <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Manage Reservations</span>
+        </div>
+        <h2 class="section-title">Your Dining Reservations</h2>
+        <p class="section-description">Search by reservation reference code or view upcoming and past dining passes.</p>
+      </div>
+
+      <!-- Search & Lookup Box -->
+      <div class="booking-lookup-wrapper">
+        <div class="lookup-input-group">
+          <svg class="svg-icon-sm text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/></svg>
+          <input type="text" id="lookupCodeInput" placeholder="Enter Booking Reference (e.g. AO-74192) or Email">
+          <button type="button" class="btn-lookup-action" id="lookupSearchBtn">Find Booking</button>
+          <button type="button" class="btn-lookup-reset" id="lookupResetBtn">Show All</button>
+        </div>
+      </div>
+
+      <!-- Reservations List Grid -->
+      <div class="reservations-card-list" id="reservationsList">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- MODALS -->
+  <!-- ========================================== -->
+
+  <!-- 1. BOOKING CONFIRMATION & DIGITAL BOARDING PASS MODAL -->
+  <div class="modal-backdrop" id="confirmationModal">
+    <div class="modal-card modal-ticket-card">
+      <button type="button" class="modal-close-btn" id="closeConfirmationBtn" aria-label="Close">
+        <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+      </button>
+
+      <div class="ticket-header">
+        <div class="ticket-badge-pill">Seat Booking Confirmed</div>
+        <h3 class="ticket-title">Digital Dining Pass</h3>
+        <p class="ticket-subtitle">Present this confirmation ticket upon arrival at the hostess desk</p>
+      </div>
+
+      <div class="ticket-body">
+        <div class="ticket-ref-bar">
+          <div class="ticket-ref-item">
+            <span class="ref-label">Reference Code</span>
+            <span class="ref-value text-gold" id="passRefCode">AO-74192</span>
+          </div>
+          <div class="ticket-ref-item">
+            <span class="ref-label">Status</span>
+            <span class="badge-status-green" id="passStatus">Confirmed</span>
+          </div>
+        </div>
+
+        <div class="ticket-grid-fields">
+          <div class="ticket-field">
+            <span class="ticket-label">Guest Name</span>
+            <span class="ticket-value" id="passGuestName">Sophia Laurent</span>
+          </div>
+          <div class="ticket-field">
+            <span class="ticket-label">Party Size</span>
+            <span class="ticket-value" id="passGuests">2 Guests</span>
+          </div>
+          <div class="ticket-field">
+            <span class="ticket-label">Date</span>
+            <span class="ticket-value" id="passDate">Oct 30, 2026</span>
+          </div>
+          <div class="ticket-field">
+            <span class="ticket-label">Time</span>
+            <span class="ticket-value" id="passTime">07:30 PM</span>
+          </div>
+          <div class="ticket-field">
+            <span class="ticket-label">Dining Zone</span>
+            <span class="ticket-value text-emerald" id="passZone">Skyline Rooftop</span>
+          </div>
+          <div class="ticket-field">
+            <span class="ticket-label">Assigned Table</span>
+            <span class="ticket-value text-gold" id="passTable">Table #21 (Window View)</span>
+          </div>
+        </div>
+
+        <!-- Add-ons in Ticket -->
+        <div class="ticket-addons-box" id="passAddonsBox">
+          <span class="ticket-label">Pre-Ordered Experiences:</span>
+          <div id="passAddonsList" class="ticket-addons-list"></div>
+        </div>
+
+        <!-- Digital Verification Barcode / SVG QR -->
+        <div class="ticket-qr-zone">
+          <div class="qr-svg-wrapper">
+            <svg class="svg-qr-code" viewBox="0 0 100 100">
+              <rect x="0" y="0" width="100" height="100" fill="#0f172a" rx="4"/>
+              <!-- Decorative Barcode Grid -->
+              <rect x="10" y="10" width="24" height="24" fill="#d97706" rx="2"/>
+              <rect x="14" y="14" width="16" height="16" fill="#0f172a"/>
+              <rect x="18" y="18" width="8" height="8" fill="#d97706"/>
+
+              <rect x="66" y="10" width="24" height="24" fill="#d97706" rx="2"/>
+              <rect x="70" y="14" width="16" height="16" fill="#0f172a"/>
+              <rect x="74" y="18" width="8" height="8" fill="#d97706"/>
+
+              <rect x="10" y="66" width="24" height="24" fill="#d97706" rx="2"/>
+              <rect x="14" y="70" width="16" height="16" fill="#0f172a"/>
+              <rect x="18" y="74" width="8" height="8" fill="#d97706"/>
+
+              <rect x="42" y="12" width="6" height="14" fill="#10b981"/>
+              <rect x="52" y="12" width="6" height="8" fill="#10b981"/>
+              <rect x="42" y="32" width="16" height="6" fill="#d97706"/>
+              <rect x="68" y="42" width="20" height="6" fill="#10b981"/>
+              <rect x="42" y="46" width="8" height="20" fill="#d97706"/>
+              <rect x="56" y="46" width="16" height="8" fill="#10b981"/>
+              <rect x="42" y="74" width="12" height="14" fill="#10b981"/>
+              <rect x="62" y="66" width="26" height="8" fill="#d97706"/>
+              <rect x="62" y="80" width="12" height="8" fill="#10b981"/>
+            </svg>
+          </div>
+          <div class="qr-label">
+            <span>Verified Digital Ticket</span>
+            <span class="text-muted">Aura &amp; Olive Smart Hospitality</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ticket-footer">
+        <button type="button" class="btn-ticket-print" onclick="window.print()">
+          <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+          <span>Print / Save Pass</span>
+        </button>
+        <button type="button" class="btn-ticket-done" id="ticketDoneBtn">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. AUTH MODAL (SIGN IN / SIGN UP / DEMO SWITCH) -->
+  <div class="modal-backdrop" id="authModal">
+    <div class="modal-card modal-auth-card">
+      <button type="button" class="modal-close-btn" id="closeAuthBtn" aria-label="Close">
+        <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+      </button>
+
+      <div class="auth-header">
+        <div class="logo-mark mx-auto mb-2">
+          <svg class="svg-icon-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </div>
+        <h3 class="auth-title" id="authModalTitle">Welcome to Aura &amp; Olive</h3>
+        <p class="auth-subtitle">Sign in to manage your table bookings and taste preferences</p>
+      </div>
+
+      <!-- Quick 1-Click Fast Demo Login Buttons -->
+      <div class="demo-auth-box">
+        <span class="demo-auth-label">1-Click Quick Demo Accounts:</span>
+        <div class="demo-auth-buttons">
+          <button type="button" class="btn-demo-pill" id="demoCustomerBtn">
+            <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Demo Customer (Sophia)</span>
+          </button>
+          <button type="button" class="btn-demo-pill" id="demoStaffBtn">
+            <svg class="svg-icon-xs text-emerald" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <span>Demo Staff / Admin (Chef Julian)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tabs: Sign In vs Sign Up -->
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab-btn active" id="tabSignIn">Sign In</button>
+        <button type="button" class="auth-tab-btn" id="tabSignUp">Create Account</button>
+      </div>
+
+      <form id="authForm" class="auth-form">
+        <div class="input-group" id="authNameGroup" style="display: none;">
+          <label for="authFullName">Full Name</label>
+          <input type="text" id="authFullName" placeholder="Victoria Sterling">
+        </div>
+
+        <div class="input-group">
+          <label for="authEmail">Email Address</label>
+          <input type="email" id="authEmail" placeholder="patron@domain.com" required>
+        </div>
+
+        <div class="input-group">
+          <label for="authPassword">Password</label>
+          <input type="password" id="authPassword" placeholder="••••••••" required>
+        </div>
+
+        <div class="input-group" id="authPhoneGroup" style="display: none;">
+          <label for="authPhone">Phone Number</label>
+          <input type="tel" id="authPhone" placeholder="+1 (555) 932-8411">
+        </div>
+
+        <div class="auth-feedback" id="authFeedback"></div>
+
+        <button type="submit" class="btn-auth-submit" id="authSubmitBtn">
+          <span>Sign In</span>
+          <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. STAFF / ADMIN MANAGEMENT PORTAL MODAL -->
+  <div class="modal-backdrop" id="adminModal">
+    <div class="modal-card modal-admin-card">
+      <div class="admin-modal-header">
+        <div class="admin-title-wrap">
+          <div class="badge-status-emerald">Manager &amp; Staff Portal</div>
+          <h3 class="admin-heading">Live Table &amp; Reservation Control</h3>
+        </div>
+        <button type="button" class="modal-close-btn" id="closeAdminBtn" aria-label="Close">
+          <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Quick Metrics Bar -->
+      <div class="admin-metrics-bar">
+        <div class="admin-metric-card">
+          <div class="metric-val text-gold" id="metricTotalBookings">18</div>
+          <div class="metric-label">Total Reservations</div>
+        </div>
+        <div class="admin-metric-card">
+          <div class="metric-val text-emerald" id="metricAvailableTables">16</div>
+          <div class="metric-label">Available Tables</div>
+        </div>
+        <div class="admin-metric-card">
+          <div class="metric-val text-crimson" id="metricReservedTables">5</div>
+          <div class="metric-label">Reserved / Occupied</div>
+        </div>
+        <div class="admin-metric-card">
+          <div class="metric-val text-blue" id="metricTotalCovers">48</div>
+          <div class="metric-label">Expected Covers Today</div>
+        </div>
+      </div>
+
+      <!-- Admin Tab Switcher -->
+      <div class="admin-sub-tabs">
+        <button type="button" class="admin-tab-btn active" id="tabAdminReservations">Manage Reservations</button>
+        <button type="button" class="admin-tab-btn" id="tabAdminTables">Live Table Status Control</button>
+      </div>
+
+      <!-- Tab Content 1: Reservations Table List -->
+      <div class="admin-tab-content" id="adminContentReservations">
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Ref Code</th>
+                <th>Guest</th>
+                <th>Date &amp; Time</th>
+                <th>Zone / Table</th>
+                <th>Guests</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="adminReservationsBody">
+              <!-- Rendered via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab Content 2: Table Controls -->
+      <div class="admin-tab-content" id="adminContentTables" style="display: none;">
+        <div class="admin-tables-grid" id="adminTablesGrid">
+          <!-- Rendered via JavaScript -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. SUPABASE & VERCEL DEPLOYMENT GUIDE MODAL -->
+  <div class="modal-backdrop" id="supabaseModal">
+    <div class="modal-card modal-guide-card">
+      <div class="guide-modal-header">
+        <div class="guide-title-wrap">
+          <div class="badge-status-emerald">Full-Stack Cloud Configuration</div>
+          <h3 class="guide-heading">Supabase Connection &amp; Vercel Deployment</h3>
+          <p class="guide-sub">Follow these instructions to connect your live Supabase database and deploy this website to Vercel.</p>
+        </div>
+        <button type="button" class="modal-close-btn" id="closeSupabaseBtn" aria-label="Close">
+          <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Direct Key Input in UI -->
+      <div class="live-keys-box">
+        <div class="keys-box-title">
+          <svg class="svg-icon-sm text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <span>Connect Your Supabase Project Directly in Browser:</span>
+        </div>
+        <p class="keys-box-desc">Enter your Supabase credentials to immediately connect the frontend to your real database.</p>
+        <div class="keys-inputs-grid">
+          <div class="input-group">
+            <label for="inputSupabaseUrl">Supabase Project URL</label>
+            <input type="text" id="inputSupabaseUrl" placeholder="https://your-project-id.supabase.co">
+          </div>
+          <div class="input-group">
+            <label for="inputSupabaseKey">Supabase Public Anon Key</label>
+            <input type="password" id="inputSupabaseKey" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...">
+          </div>
+        </div>
+        <div class="keys-action-row">
+          <button type="button" class="btn-connect-supabase" id="saveSupabaseKeysBtn">
+            <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Save &amp; Connect to Supabase</span>
+          </button>
+          <button type="button" class="btn-disconnect-supabase" id="disconnectSupabaseBtn">Reset to Demo Store</button>
+          <span class="keys-feedback-msg" id="keysFeedbackMsg"></span>
+        </div>
+      </div>
+
+      <!-- Step-by-Step Instructions -->
+      <div class="guide-steps-list">
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <div class="step-body">
+            <h4 class="step-title">Create Supabase Project &amp; Run SQL Schema</h4>
+            <p class="step-text">
+              1. Log in to <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" class="link-highlight">Supabase.com</a> and click <strong>New Project</strong>.<br>
+              2. Go to the left navigation bar and click <strong>SQL Editor</strong> &gt; <strong>New Query</strong>.<br>
+              3. Open the file <code>supabase_schema.sql</code> provided in this project root, copy the contents, paste them into the SQL Editor, and click <strong>Run</strong>. All tables, RLS policies, and seed data will be created automatically.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <div class="step-body">
+            <h4 class="step-title">Obtain Your API Credentials</h4>
+            <p class="step-text">
+              In Supabase, navigate to <strong>Project Settings</strong> &gt; <strong>API</strong>.<br>
+              Copy the <strong>Project URL</strong> and the <strong>anon public</strong> key.<br>
+              You can paste them into the box above or into a <code>.env</code> file:
+            </p>
+            <pre class="code-block"><code>SUPABASE_URL=https://your-id.supabase.co
+SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1Ni...</code></pre>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <div class="step-body">
+            <h4 class="step-title">Deploy to Vercel in 2 Minutes</h4>
+            <p class="step-text">
+              1. Initialize Git and push this repository to GitHub or GitLab:<br>
+              <code>git add . &amp;&amp; git commit -m "Full-stack Restaurant" &amp;&amp; git push</code><br>
+              2. Open <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" class="link-highlight">Vercel.com</a>, click <strong>Add New...</strong> &gt; <strong>Project</strong>, and import your repository.<br>
+              3. Under <strong>Environment Variables</strong>, add:<br>
+              &bull; <code>SUPABASE_URL</code>: your Supabase URL<br>
+              &bull; <code>SUPABASE_ANON_KEY</code>: your Supabase Anon key<br>
+              4. Click <strong>Deploy</strong>. Vercel automatically deploys the frontend and the serverless Node.js backend using the configured <code>vercel.json</code>!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. WRITE REVIEW MODAL -->
+  <div class="modal-backdrop" id="reviewModal">
+    <div class="modal-card modal-auth-card">
+      <button type="button" class="modal-close-btn" id="closeReviewBtn" aria-label="Close">
+        <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+      </button>
+
+      <div class="auth-header">
+        <h3 class="auth-title">Share Your Experience</h3>
+        <p class="auth-subtitle">Rate your culinary journey at Aura &amp; Olive</p>
+      </div>
+
+      <form id="reviewForm" class="auth-form">
+        <div class="input-group">
+          <label for="reviewAuthor">Your Name</label>
+          <input type="text" id="reviewAuthor" placeholder="Victoria Sterling" required>
+        </div>
+
+        <div class="input-group">
+          <label for="reviewRating">Overall Rating (1 to 5 Stars)</label>
+          <select id="reviewRating">
+            <option value="5">5 Stars - Extraordinary</option>
+            <option value="4">4 Stars - Excellent</option>
+            <option value="3">3 Stars - Good</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="reviewVisitType">Dining Occasion</label>
+          <select id="reviewVisitType">
+            <option value="Romantic Date">Romantic Date</option>
+            <option value="Anniversary Dinner">Anniversary Dinner</option>
+            <option value="Business Dining">Business Dining</option>
+            <option value="Family Celebration">Family Celebration</option>
+            <option value="Casual Lunch">Casual Lunch</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="reviewComment">Review Comments</label>
+          <textarea id="reviewComment" rows="3" placeholder="Describe the ambiance, dish highlights, and service..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-auth-submit">
+          <span>Submit Review</span>
+          <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col-brand">
+        <div class="brand-logo mb-3">
+          <div class="logo-mark">
+            <svg class="svg-icon-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">AURA &amp; OLIVE</span>
+            <span class="brand-subtitle">Culinary House &amp; Lounge</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Artisanal Mediterranean cuisine, woodfired dining, and bespoke sommelier pairings situated in an architectural four-zone venue.
+        </p>
+        <div class="footer-accreditation">
+          <span class="accreditation-pill">Michelin Recommended 2026</span>
+          <span class="accreditation-pill">Wine Spectator Award of Excellence</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Dining Hours</h4>
+        <ul class="footer-list">
+          <li><strong>Lunch Service:</strong> Tue - Sun: 12:00 PM - 03:00 PM</li>
+          <li><strong>Dinner Service:</strong> Daily: 05:30 PM - 11:30 PM</li>
+          <li><strong>Skyline Rooftop Bar:</strong> Daily: 04:00 PM - 01:00 AM</li>
+          <li><strong>Monday:</strong> Reserved for Private Tastings</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Venue &amp; Reservations</h4>
+        <ul class="footer-list">
+          <li>
+            <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            742 Grand Avenue, Downtown Metro
+          </li>
+          <li>
+            <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +1 (555) 794-2000
+          </li>
+          <li>
+            <svg class="svg-icon-xs text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            reservations@auraandolive.com
+          </li>
+          <li>
+            <span class="text-muted">Valet Parking &amp; Smart Casual Attire</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <div>&copy; 2026 Aura &amp; Olive Gastronomy Group. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="#seatBooking">Reserve Seat</a>
+          <a href="#menu">Menu</a>
+          <button type="button" class="btn-footer-link" id="footerSupabaseBtn">Supabase &amp; Vercel Guide</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Canvas Confetti Library from CDN for celebration animation on booking -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+  <!-- Supabase JS Client from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.min.js"></script>
+  <!-- Main Application Script -->
+  <script src="script.js"></script>
+</body>
+</html>
